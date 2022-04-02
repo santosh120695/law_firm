@@ -1,0 +1,10 @@
+<div class="card card-flush py-4">
+	<div class="card-header">
+		<div class="card-title">
+			<h2>Payment Status</h2>
+		</div>
+	</div>
+	<div class="card-body pt-0">
+		<%= render "payment_statuses/form", {payment_status:  PaymentStatus.new, title: title} %>
+	</div>
+</div>

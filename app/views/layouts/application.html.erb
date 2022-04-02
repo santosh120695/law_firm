@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LawFirmNew</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body id="kt_body"  class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled" style="background-image: url(<%= asset_path("header-bg.jpg")%>)">
+    <div class="d-flex flex-column flex-root">
+      <div class="page d-flex flex-row flex-column-fluid">
+        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+          <%= render "globals/header" %>
+          <%= yield :toolbar %>
+          <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+            <div class="content flex-row-fluid" id="kt_content">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

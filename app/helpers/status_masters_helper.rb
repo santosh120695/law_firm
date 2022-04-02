@@ -1,0 +1,2 @@
+module StatusMastersHelper
+end

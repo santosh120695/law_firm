@@ -1,0 +1,129 @@
+<ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-n2">
+	<li class="nav-item">
+		<a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#kt_ecommerce_add_product_general">Title Entry</a>
+	</li>
+</ul>
+<a href="<%= titles_path %>" class="btn btn-primary">View All Titles</a>
+
+<%= form_with(model: title) do |form| %>
+  <% if title.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(title.errors.count, "error") %> prohibited this title from being saved:</h2>
+      <ul>
+        <% title.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
+      <div class="d-flex flex-column gap-7 gap-lg-10">
+        <div class="card card-flush py-4">
+          <div class="card-header">
+						<div class="card-title">
+							<h2>Title</h2>
+						</div>
+					</div>
+          <div class="card-body pt-0">
+            <div class='mb-10 fv-row'>
+              <%= form.label :client_id, style: "display: block" %>
+              <%= form.select :client_id, Client.all.pluck(:name, :id),{},{class: "form-control", disabled: disabled} %>
+            </div>
+            <div class='mb-10 fv-row'>
+              <%= form.label :block_no, style: "display: block" %>
+              <%= form.text_field :block_no, class: "form-control", disabled: disabled %>
+            </div>
+
+            <div class='mb-10 fv-row'>
+              <%= form.label :pincode, style: "display: block" %>
+              <%= form.text_field :pincode, class: "form-control", disabled: disabled %>
+            </div>
+
+            <div class='mb-10 fv-row'>
+              <%= form.label :village, style: "display: block" %>
+              <%= form.text_field :village, class: "form-control", disabled: disabled %>
+            </div>
+
+            <div class='mb-10 fv-row'>
+              <%= form.label :taluka, style: "display: block" %>
+              <%= form.text_field :taluka, class: "form-control",disabled: disabled %>
+            </div>
+
+            <div class='mb-10 fv-row'>
+              <%= form.label :description, style: "display: block" %>
+              <%= form.text_field :description, class: "form-control", disabled: disabled %>
+            </div>
+          </div>
+        </div>
+        <div class="card card-flush py-4">
+          <div class="card-header">
+						<div class="card-title">
+							<h2>Media</h2>
+						</div>
+					</div>
+          <div class="card-body pt-0">
+            <div class="fv-row mb-2">
+              <div class="dropzone" id="kt_ecommerce_add_product_media">
+								<div class="dz-message needsclick">
+									<i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+									<div class="ms-4">
+										<h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
+										<span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
+									</div>
+								</div>
+							</div>
+            </div>
+            <div class="text-muted fs-7">Add Title Details and News Published PDF</div>
+          </div>
+        </div>
+        <div class="card card-flush py-4">
+          <div class="card-header">
+						<div class="card-title">
+							<h2>Pricing</h2>
+						</div>
+					</div>
+          <div class="card-body pt-0">
+            <%= form.fields_for :pricing_detail do |pricing_detail_form| %>
+                <div>
+                  <%= pricing_detail_form.label :base_price, style: "display: block" %>
+                  <%= pricing_detail_form.text_field :base_price, class: "form-control",  disabled: disabled %>
+                </div>
+
+                <div>
+                  <%= pricing_detail_form.label :additional_amount, style: "display: block" %>
+                  <%= pricing_detail_form.text_field :additional_amount, class: "form-control", disabled: disabled %>
+                </div>
+
+                <div>
+                  <%= pricing_detail_form.label :discount_type, style: "display: block" %>
+                  <%= pricing_detail_form.number_field :discount_type, class: "form-control", disabled: disabled %>
+                </div>
+
+                <div>
+                  <%= pricing_detail_form.label :tax_class, style: "display: block" %>
+                  <%= pricing_detail_form.text_field :tax_class, class: "form-control", disabled: disabled %>
+                </div>
+
+                <div>
+                  <%= pricing_detail_form.label :vat_amount, style: "display: block" %>
+                  <%= pricing_detail_form.text_field :vat_amount, class: "form-control", disabled: disabled %>
+                </div>
+
+                <div>
+                  <%#= pricing_detail_form.label :title_id, style: "display: block" %>
+                  <%= pricing_detail_form.hidden_field :title_id %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if !disabled %>
+    <div class="d-flex justify-content-end">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Payment modes</h1>
+
+<div id="payment_modes">
+  <% @payment_modes.each do |payment_mode| %>
+    <%= render payment_mode %>
+    <p>
+      <%= link_to "Show this payment mode", payment_mode %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New payment mode", new_payment_mode_path %>

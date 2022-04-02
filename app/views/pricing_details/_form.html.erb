@@ -1,0 +1,47 @@
+<%= form_with(model: pricing_detail) do |form| %>
+  <% if pricing_detail.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pricing_detail.errors.count, "error") %> prohibited this pricing_detail from being saved:</h2>
+
+      <ul>
+        <% pricing_detail.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :base_price, style: "display: block" %>
+    <%= form.text_field :base_price %>
+  </div>
+
+  <div>
+    <%= form.label :additional_amount, style: "display: block" %>
+    <%= form.text_field :additional_amount %>
+  </div>
+
+  <div>
+    <%= form.label :discount_type, style: "display: block" %>
+    <%= form.number_field :discount_type %>
+  </div>
+
+  <div>
+    <%= form.label :tax_class, style: "display: block" %>
+    <%= form.text_field :tax_class %>
+  </div>
+
+  <div>
+    <%= form.label :vat_amount, style: "display: block" %>
+    <%= form.text_field :vat_amount %>
+  </div>
+
+  <div>
+    <%= form.label :title_id, style: "display: block" %>
+    <%= form.text_field :title_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

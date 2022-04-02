@@ -1,0 +1,31 @@
+<%= form_with(model: [title, payment_status]) do |form| %>
+  
+  <%= form.label :payment_mode_id, style: "display: block" %>
+  <%= form.select :payment_mode_id, PaymentMode.all.pluck(:name, :id), {}, {class: "form-control mb-2" }  %>
+
+  <div class="fv-row mb-10">
+    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+			<span class="required">Payment Details</span>
+			<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify your unique payment mode"></i>
+		</label>
+    <%= form.text_field :payment_detail, class: "form-control form-control-lg form-control-solid" %>
+  </div>
+
+  <div class="fv-row mb-10">
+    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+			<span class="required">Amount</span>
+			<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify amount received"></i>
+		</label>
+    <%= form.number_field :amount, class: "form-control form-control-lg form-control-solid" %>
+  </div>
+
+  <div class="text-muted fs-7 mb-7">Add Payments Made</div>
+  <button  class="btn btn-light-primary btn-sm mb-10">
+		<span class="svg-icon svg-icon-2">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1" transform="rotate(-90 11 18)" fill="black" />
+				<rect x="6" y="11" width="12" height="2" rx="1" fill="black" />
+			</svg>
+		</span>
+  Add Payment</button>
+<% end %>
