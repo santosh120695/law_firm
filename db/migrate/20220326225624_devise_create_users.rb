@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :employee_code
       t.string :first_name
       t.string :last_name
+      t.string :uuid
 
       t.timestamps null: false
     end
