@@ -7,4 +7,5 @@ bootstrap = require('bootstrap');
 window.Popper = require('@popperjs/core');
 import "./theme"
 import "./title"
+import "./pincode"
 

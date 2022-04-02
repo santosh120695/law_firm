@@ -28,32 +28,32 @@
 					</div>
           <div class="card-body pt-0">
             <div class='mb-10 fv-row'>
-              <%= form.label :client_id, style: "display: block" %>
-              <%= form.select :client_id, Client.all.pluck(:name, :id),{},{class: "form-control", disabled: disabled} %>
+              <%= form.label :client_id, style: "display: block", class: "form-label" %>
+              <%= form.select :client_id, Client.all.pluck(:name, :id),{},{class: "form-control mb-2", disabled: disabled} %>
             </div>
             <div class='mb-10 fv-row'>
-              <%= form.label :block_no, style: "display: block" %>
-              <%= form.text_field :block_no, class: "form-control", disabled: disabled %>
-            </div>
-
-            <div class='mb-10 fv-row'>
-              <%= form.label :pincode, style: "display: block" %>
-              <%= form.text_field :pincode, class: "form-control", disabled: disabled %>
+              <%= form.label :block_no, style: "display: block", class: "form-label" %>
+              <%= form.text_field :block_no, class: "form-control mb-2", disabled: disabled %>
             </div>
 
             <div class='mb-10 fv-row'>
-              <%= form.label :village, style: "display: block" %>
-              <%= form.text_field :village, class: "form-control", disabled: disabled %>
+              <%= form.label :pincode, style: "display: block", class: "form-label" %>
+              <%= form.text_field :pincode, class: "form-control mb-2", disabled: disabled %>
             </div>
 
             <div class='mb-10 fv-row'>
-              <%= form.label :taluka, style: "display: block" %>
-              <%= form.text_field :taluka, class: "form-control",disabled: disabled %>
+              <%= form.label :village, style: "display: block", class: "form-label" %>
+              <%= form.select :village,[[]], {} ,{class: "form-control mb-2", disabled: disabled} %>
             </div>
 
             <div class='mb-10 fv-row'>
-              <%= form.label :description, style: "display: block" %>
-              <%= form.text_field :description, class: "form-control", disabled: disabled %>
+              <%= form.label :taluka, style: "display: block", class: "form-label" %>
+              <%= form.select :taluka, [[]], {}, {class: "form-control mb-2", disabled: disabled} %>
+            </div>
+
+            <div class='mb-10 fv-row'>
+              <%= form.label :description, style: "display: block", class: "form-label" %>
+              <%= form.text_field :description, class: "form-control mb-2", disabled: disabled %>
             </div>
           </div>
         </div>
@@ -87,28 +87,28 @@
           <div class="card-body pt-0">
             <%= form.fields_for :pricing_detail do |pricing_detail_form| %>
                 <div>
-                  <%= pricing_detail_form.label :base_price, style: "display: block" %>
-                  <%= pricing_detail_form.text_field :base_price, class: "form-control",  disabled: disabled %>
+                  <%= pricing_detail_form.label :base_price, style: "display: block", class: "form-label" %>
+                  <%= pricing_detail_form.text_field :base_price, class: "form-control mb-2",  disabled: disabled %>
                 </div>
 
                 <div>
-                  <%= pricing_detail_form.label :additional_amount, style: "display: block" %>
-                  <%= pricing_detail_form.text_field :additional_amount, class: "form-control", disabled: disabled %>
+                  <%= pricing_detail_form.label :additional_amount, style: "display: block", class: "form-label" %>
+                  <%= pricing_detail_form.text_field :additional_amount, class: "form-control mb-2", disabled: disabled %>
                 </div>
 
                 <div>
-                  <%= pricing_detail_form.label :discount_type, style: "display: block" %>
-                  <%= pricing_detail_form.number_field :discount_type, class: "form-control", disabled: disabled %>
+                  <%= pricing_detail_form.label :discount_type, style: "display: block", class: "form-label" %>
+                  <%= pricing_detail_form.number_field :discount_type, class: "form-control mb-2", disabled: disabled %>
                 </div>
 
                 <div>
-                  <%= pricing_detail_form.label :tax_class, style: "display: block" %>
-                  <%= pricing_detail_form.text_field :tax_class, class: "form-control", disabled: disabled %>
+                  <%= pricing_detail_form.label :tax_class, style: "display: block", class: "form-label" %>
+                  <%= pricing_detail_form.text_field :tax_class, class: "form-control mb-2", disabled: disabled %>
                 </div>
 
                 <div>
-                  <%= pricing_detail_form.label :vat_amount, style: "display: block" %>
-                  <%= pricing_detail_form.text_field :vat_amount, class: "form-control", disabled: disabled %>
+                  <%= pricing_detail_form.label :vat_amount, style: "display: block", class: "form-label" %>
+                  <%= pricing_detail_form.text_field :vat_amount, class: "form-control mb-2", disabled: disabled %>
                 </div>
 
                 <div>
