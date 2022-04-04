@@ -1,5 +1,6 @@
 class TitlesController < ApplicationController
-  before_action :set_title, only: %i[ show edit update destroy status_update]
+  before_action :set_title, only: %i[ update destroy ]
+  before_action :set_title_uuid, only: %i[ show edit  status_update]
   skip_before_action :verify_authenticity_token, only: [:status_update]
 
   # GET /titles or /titles.json
@@ -39,7 +40,7 @@ class TitlesController < ApplicationController
   # PATCH/PUT /titles/1 or /titles/1.json
   def update
     respond_to do |format|
-      if @title.update(title_params)
+      if @title.update!(title_params)
         format.html { redirect_to title_url(@title), notice: "Title was successfully updated." }
         format.json { render :show, status: :ok, location: @title }
       else
@@ -61,13 +62,16 @@ class TitlesController < ApplicationController
 
   def status_update 
     status  = StatusMaster.find(params[:status])
-    @title.update(status_id: status)
+    @title.update!(status_id: status.id)
     return head :no_content
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_title
+      @title = Title.find_by(id: params[:id])
+    end
+    def set_title_uuid
       @title = Title.find_by(uuid: params[:id])
     end
 
