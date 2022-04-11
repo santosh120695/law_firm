@@ -1,6 +1,6 @@
 <div id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
   <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
-		<%= render "client_details"%>
+		<%= render "client_details", title: @title%>
 		<%= render "title_status",  title: @title%>
 		<%= render "payment_status", title: @title %>
 		<%= render "payments_received", title: @title %>
