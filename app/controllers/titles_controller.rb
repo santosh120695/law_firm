@@ -62,7 +62,10 @@ class TitlesController < ApplicationController
 
   def status_update 
     status  = StatusMaster.find(params[:status])
+    state_transition = StateTransition.new(from: @title.status.name, item_id: @title.id, item_type: "Title", user_id: current_user.id)
     @title.update!(status_id: status.id)
+    state_transition.to =  @title.status.name 
+    state_transition.save!
     return head :no_content
   end
 

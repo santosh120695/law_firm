@@ -16,6 +16,6 @@ User.create(email: "admin@blankspace.com", password: "1linkwok@", password_confi
 
 # rails g scaffold StatusMaster name color active uuid 
 
-rails g scaffold payment_mode name uuid active:boolean
+# rails g scaffold payment_mode name uuid active:boolean
 
-rails g scaffold payment_status payment_mode:references payment_detail amount:float uuid
+# rails g scaffold payment_status payment_mode:references payment_detail amount:float uuid
