@@ -6,5 +6,9 @@ class Title < ApplicationRecord
 
   accepts_nested_attributes_for :pricing_detail, allow_destroy: true, reject_if: :all_blank
 
-  before_create :set_uuid 
+  before_create :set_uuid , :set_status
+
+  def set_status 
+    self.status_id = StatusMaster.where(active: true, status_type: "Title", initial: true).last.id
+  end
 end

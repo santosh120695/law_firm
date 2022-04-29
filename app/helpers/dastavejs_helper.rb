@@ -1,0 +1,2 @@
+module DastavejsHelper
+end

@@ -1,0 +1,113 @@
+<%= form_with(model: dastavej, data:{turbo: false}) do |form| %>
+  <% if dastavej.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(dastavej.errors.count, "error") %> prohibited this dastavej from being saved:</h2>
+
+      <ul>
+        <% dastavej.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mt-4">
+    <%= form.label :client_id, style: "display: block" %>
+    <%= form.select :client_id, Client.all.pluck(:name, :id), {include_blank: true}, {class: "form-control", disabled: disabled} %>
+  </div>
+
+  <div class="form-group mt-4">
+    <%= form.label :project_id, style: "display: block" %>
+    <%= form.select :project_id, [[dastavej.project&.name, dastavej.project_id]], {}, {class: "form-control", disabled: disabled} %>
+  </div>
+
+  <div class="form-group mt-4">
+    <%= form.label :tower_id, style: "display: block" %>
+    <%= form.select :tower_id, [[dastavej.tower&.name, dastavej.tower_id]], {}, {class: "form-control", disabled: disabled} %>
+  </div>
+  <div class="form-group mt-4">
+    <%= form.label :floor_id, style: "display: block" %>
+    <%= form.select :floor_id, [[dastavej.floor&.name, dastavej.floor_id]], {}, {class: "form-control", disabled: disabled} %>
+  </div>
+
+  <div class="form-group mt-4">
+    <%= form.label :unit_id, style: "display: block" %>
+    <%= form.select :unit_id, [[dastavej.unit&.name, dastavej.unit_id]], {}, class: "form-control", disabled: disabled %>
+  </div>
+
+  <div class="form-group mt-4"> 
+    <%= form.label :party_name, style: "display: block" %>
+    <%= form.text_field :party_name, class: "form-control", disabled: disabled %>
+  </div>
+
+  <div class="form-group mt-4">
+    <%= form.label :contact_number, style: "display: block" %>
+    <%= form.text_field :contact_number, class: "form-control", disabled: disabled %>
+  </div>
+
+
+  <% if dastavej.persisted? %>
+    <div class="form-group mt-4">
+        <%= form.label :sale_deed %>
+        <% if dastavej.sale_deed.present? %>
+          <br/>
+          <%= link_to dastavej.sale_deed.blob.filename, dastavej.sale_deed %>
+        <% end %>
+        <%= form.file_field :sale_deed, class: "form-control" %>
+    </div>
+
+    <div class="form-group mt-4">
+        <%= form.label :ats %>
+        <% if dastavej.ats.present? %>
+          <br/>
+          <%= link_to dastavej.ats.blob.filename, dastavej.ats %>
+        <% end %>
+        <%= form.file_field :ats, class: "form-control" %>
+    </div>
+
+    <div class="form-group mt-4">
+        <%= form.label :development_agreement %>
+        <% if dastavej.development_agreement.present? %>
+          <br/>
+          <%= link_to dastavej.development_agreement.blob.filename, dastavej.development_agreement %>
+        <% end %>
+        <%= form.file_field :development_agreement, class: "form-control" %>
+    </div>
+    <div class="form-group mt-4">
+        <%= form.label :other_agreement %>
+        <% if dastavej.other_agreement.present? %>
+          <br/>
+          <%= link_to dastavej.other_agreement.blob.filename, dastavej.other_agreement %>
+        <% end %>
+        <%= form.file_field :other_agreement, class: "form-control" %>
+    </div>
+    <div class="form-group mt-4">
+        <%= form.label :corraction_agreement %>
+        <% if dastavej.corraction_agreement.present? %>
+          <br/>
+          <%= link_to dastavej.corraction_agreement.blob.filename, dastavej.corraction_agreement %>
+        <% end %>
+        <%= form.file_field :corraction_agreement, class: "form-control" %>
+    </div>
+    <div class="form-group mt-4">
+        <%= form.label :hakk_kami %>
+        <% if dastavej.hakk_kami.present? %>
+          <br/>
+          <%= link_to dastavej.hakk_kami.blob.filename, dastavej.hakk_kami %>
+        <% end %>
+        <%= form.file_field :hakk_kami, class: "form-control" %>
+    </div>
+    <div class="form-group mt-4">
+        <%= form.label :mortage %>
+        <% if dastavej.mortage.present? %>
+          <br/>
+          <%= link_to dastavej.mortage.blob.filename, dastavej.mortage %>
+        <% end %>
+        <%= form.file_field :mortage, class: "form-control" %>
+    </div>
+  <% end %>
+
+    <div class="form-group mt-3">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+<% end %>

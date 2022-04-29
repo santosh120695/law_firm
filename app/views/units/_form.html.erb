@@ -1,0 +1,69 @@
+<%= form_with(model: unit) do |form| %>
+   <% if unit.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(unit.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+        <% unit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :unit_no %>
+    <%= form.text_field :name, class: "form-control", disabled: disabled %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :project%>
+    <%= form.select :project_id, Project.all.pluck(:name, :id), {selected: unit.project_id, include_blank: !disabled}, {class: "form-control", disabled: disabled } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tower_id %>
+    <%= form.select :tower_id,[[unit&.tower&.name, unit.tower_id]], {}, {class: "form-control",  disabled: disabled} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :floor_id %>
+    <%= form.select :floor_id, [[unit&.floor&.name, unit.floor_id]], {},{class: "form-control", disabled: disabled }%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :rera_carpet_area %>
+    <%= form.text_field :rera_carpet_area, class: "form-control", disabled: disabled %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :exclusive_area %>
+    <%= form.text_field :exclusive_area, class: "form-control", disabled: disabled %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :open_terrace %>
+    <%= form.text_field :open_terrace, class: "form-control", disabled: disabled %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :total_area %>
+    <%= form.text_field :total_area, class: "form-control", disabled: disabled %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :undivided_share_of_land %>
+    <%= form.text_field :undivided_share_of_land, class: "form-control", disabled: disabled %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :jantri %>
+    <%= form.text_field :jantri, class: "form-control", disabled: disabled %>
+  </div>
+
+  <% if !disabled %>
+    <div class="form-group mt-4">
+      <%= form.submit class: 'btn btn-primary'%>
+    </div>
+  <% end %>
+<% end %>

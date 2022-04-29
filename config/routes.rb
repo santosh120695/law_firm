@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  resources :dastavejs do 
+    member do 
+      post 'dastavej_status_update'
+    end
+  end
+  resources :projects do 
+    member do 
+      post 'add_towers'
+      get 'get_towers'
+    end
+    collection do 
+      get 'get_floors'
+    end
+  end
+  resources :units
   resources :payment_modes
   resources :status_masters
   resources :pricing_details

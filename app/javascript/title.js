@@ -5,10 +5,8 @@ if(select_tag){
     })
 }
 
-
 const updateStatus = async (event) => {
     const selected_status = event.target.value
-    console.log(selected_status);
     const title = event.target.dataset.title
     let response = await fetch("/titles/"+title+"/status_update",{
         method: "POST",

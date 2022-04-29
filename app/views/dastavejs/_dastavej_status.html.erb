@@ -1,0 +1,18 @@
+<div class="card card-flush py-4">
+	<div class="card-header">
+		<div class="card-title">
+			<h2>Status</h2>
+		</div>
+		<div class="card-toolbar">
+			<div class="rounded-circle bg-success w-15px h-15px" id="kt_ecommerce_add_product_status"></div>
+		</div>
+	</div>
+	<div class="card-body pt-0">
+		<%= select_tag(:status, options_for_select(StatusMaster.where(status_type: "Dastavej").pluck(:name,:id), dastavej.status_id), class: "form-select mb-2", id: "dastavej-status-select", data: {dastavej: dastavej.uuid})%>
+		<div class="text-muted fs-7">Set the title status.</div>
+		<div class="d-none mt-10">
+			<label for="kt_ecommerce_add_product_status_datepicker" class="form-label">Select publishing date and time</label>
+			<input class="form-control" id="kt_ecommerce_add_product_status_datepicker" placeholder="Pick date &amp; time" />
+		</div>
+	</div>
+</div>

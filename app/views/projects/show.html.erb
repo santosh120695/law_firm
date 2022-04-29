@@ -1,0 +1,25 @@
+<div class='card'>
+    <div class='card-header'>
+        <h4 class="card-title"> <%= @project.name %> </h4>
+    </div>
+
+    <div class='card-body'>
+        <table class='table'>
+            <tr>
+                <th> Client Name </th>
+                <td> <%= @project.client.name%> </td>
+
+                <th> Total Towers </th>
+                <td> <%= @project.total_towers %> </td>
+                <td> <%= link_to "Add Towers", "#", class: "btn btn-sm btn-primary", data: {bs_target: "#tower_new_modal",bs_toggle: "modal"} %> </td>
+            </tr>
+            <tr>
+                <th> Total Units </th>
+                <td> <%= @project.total_units %> </td>
+                <td> <%= link_to "Add Unit", "#", class: "btn btn-sm btn-primary" %> </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<%= render "projects/tower_modal", project: @project %>

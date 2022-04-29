@@ -1,0 +1,25 @@
+<%= form_with(model: tower, url: add_towers_project_path(project) ) do |form| %>
+     <% if tower.errors.any? %>
+         <div style="color: red">
+         <h2><%= pluralize(tower.errors.count, "error") %> prohibited this project from being saved:</h2>
+         <ul>
+             <% tower.errors.each do |error| %>
+             <li><%= tower.full_message %></li>
+             <% end %>
+         </ul>
+         </div>
+     <% end %>
+     <div class='form-group'>
+         <%= form.label :name, style: "display: block" %>
+         <%= form.text_field :name, class: "form-control" %>
+     </div>
+     <div class='form-group'>
+         <%= form.label :total_floor, style: "display: block" %>
+         <%= form.number_field :total_floor, class: "form-control" %>
+     </div>
+
+     <div class='form-group'>
+        <button type="button" class="btn btn-light float-end" data-bs-dismiss="modal">Close</button>
+        <%= form.submit class: "btn btn-primary float-end" %>
+     </div>
+ <% end %>

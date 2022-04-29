@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  project: one
+  unit: one
+  party_name: MyString
+  contact_number: MyString
+
+two:
+  client: two
+  project: two
+  unit: two
+  party_name: MyString
+  contact_number: MyString

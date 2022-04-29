@@ -1,14 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Clients</h1>
-
-<div id="clients">
-  <% @clients.each do |client| %>
-    <%= render client %>
-    <p>
-      <%= link_to "Show this client", client %>
-    </p>
-  <% end %>
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">
+      Clients
+    </h4>
+    <span class="mt-2">
+      <%= link_to "New client", "#", class: "btn btn-primary float-end", data: {bs_toggle: "modal", bs_target: "#client_new_modal"} %>
+    <span>
+  </div>
+  <div class="card-body">
+    <table class='table'>
+      <tr>
+        <th> Client Name </th>
+        <th> Location </th>
+        <th> </th>
+      </tr>
+      <% @clients.each do |client| %>
+        <tr>
+          <td> <%= client.name %> </td>
+          <td> <%= client.location %> </td>
+          <td> <%= link_to 'View Projects', projects_path(client_id: client.uuid) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
 
-<%= link_to "New client", new_client_path %>
+<%= render "clients/client_modal"%>

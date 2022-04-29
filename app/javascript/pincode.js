@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function(){
     if(title_pincode){
         title_pincode.addEventListener('change', function(){
             call_api(title_pincode.value).then(response=>{
-                console.log(response[0]["PostOffice"]);
                 let village_options = ""
                 let taluka_options = ""
                 const data = response[0]["PostOffice"]

@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  rera_carpet_area: 1.5
+  exclusive_area: 1.5
+  open_terrace: 1.5
+  total_area: 1.5
+  undivided_share_of_land: 1.5
+  jantri: MyString
+  jantri_amount: 1.5
+  tower: one
+  floor: one
+
+two:
+  name: MyString
+  rera_carpet_area: 1.5
+  exclusive_area: 1.5
+  open_terrace: 1.5
+  total_area: 1.5
+  undivided_share_of_land: 1.5
+  jantri: MyString
+  jantri_amount: 1.5
+  tower: two
+  floor: two
