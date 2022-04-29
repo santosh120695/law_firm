@@ -18,7 +18,7 @@ class UnitsController < ApplicationController
 
 
     def new 
-        @unit = Unit.new 
+        @unit = Unit.new
     end
 
     def show 

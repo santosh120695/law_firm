@@ -16,7 +16,7 @@
             <tr>
                 <th> Total Units </th>
                 <td> <%= @project.total_units %> </td>
-                <td> <%= link_to "Add Unit", "#", class: "btn btn-sm btn-primary" %> </td>
+                <td> <%= link_to "Add Unit", new_unit_path(project_id: @project.uuid), class: "btn btn-sm btn-primary", data: {turbo: false} %> </td>
             </tr>
         </table>
     </div>
