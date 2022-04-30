@@ -5,6 +5,7 @@ class Dastavej < ApplicationRecord
   belongs_to :tower 
   belongs_to :floor
   belongs_to :status, class_name: "StatusMaster", foreign_key: "status_id", optional: true
+  has_many :payment_statuses, as: :item
   before_create :set_state 
 
   has_one_attached :sale_deed 

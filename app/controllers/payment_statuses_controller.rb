@@ -24,8 +24,8 @@ class PaymentStatusesController < ApplicationController
     @payment_status = PaymentStatus.new(payment_status_params)
     @payment_status.title_id = params[:title_id]
     respond_to do |format|
-      if @payment_status.save
-        format.html { redirect_to title_path(id: @payment_status.title.uuid), notice: "Payment status was successfully created." }
+      if @payment_status.save!
+        format.html { redirect_to "/#{@payment_status.item_type.pluralize.downcase}/#{@payment_status.item.uuid}", notice: "Payment status was successfully created." }
         format.json { render :show, status: :created, location: @payment_status }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class PaymentStatusesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_status_params
-      params.require(:payment_status).permit(:payment_mode_id, :payment_detail, :amount, :uuid)
+      params.require(:payment_status).permit(:payment_mode_id, :payment_detail, :amount, :uuid, :item_type, :item_id)
     end
 end

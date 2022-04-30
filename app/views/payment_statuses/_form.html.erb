@@ -1,4 +1,4 @@
-<%= form_with(model: [title, payment_status]) do |form| %>
+<%= form_with(model: payment_status, data: {turbo: false}) do |form| %>
   
   <%= form.label :payment_mode_id, style: "display: block" %>
   <%= form.select :payment_mode_id, PaymentMode.all.pluck(:name, :id), {}, {class: "form-control mb-2" }  %>
@@ -18,6 +18,9 @@
 		</label>
     <%= form.number_field :amount, class: "form-control form-control-lg form-control-solid" %>
   </div>
+  <%= form.hidden_field :item_type %>
+  <%= form.hidden_field :item_id %>
+  
 
   <div class="text-muted fs-7 mb-7">Add Payments Made</div>
   <button  class="btn btn-light-primary btn-sm mb-10">

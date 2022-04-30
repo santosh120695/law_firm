@@ -6,6 +6,8 @@ class CreatePaymentStatuses < ActiveRecord::Migration[7.0]
       t.float :amount
       t.string :uuid
       t.bigint :title_id, foreign_key: true
+      t.bigint :item_id 
+      t.string :item_type
 
       t.timestamps
     end

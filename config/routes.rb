@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   resources :payment_modes
   resources :status_masters
   resources :pricing_details
+  resources :payment_statuses
   resources :titles,constraints: { id: /[a-zA-Z0-9]+/ } do 
-    resources :payment_statuses
     member do 
       post 'status_update'
       post 'add_files'

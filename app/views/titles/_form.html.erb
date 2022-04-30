@@ -3,9 +3,9 @@
 		<a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#kt_ecommerce_add_product_general">Title Entry</a>
 	</li>
 </ul>
-<a href="<%= titles_path %>" class="btn btn-primary">View All Titles</a>
+<a href="<%= titles_path %>" class="btn btn-primary" data-turbo=false>View All Titles</a>
 
-<%= form_with(model: title) do |form| %>
+<%= form_with(model: title, data: {turbo: false}) do |form| %>
   <% if title.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(title.errors.count, "error") %> prohibited this title from being saved:</h2>
@@ -70,6 +70,7 @@
                   <div class="dz-message needsclick">
                     <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
                     <div class="ms-4">
+                      <div id="preview-template"> </div>
                       <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
                       <span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
                     </div>

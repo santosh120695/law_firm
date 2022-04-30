@@ -41,7 +41,7 @@
           <tbody>
             <%- @titles.each do |title| %>
               <tr>
-                <td> <%=link_to title.client.name, title_path(id: title.uuid)  %> </td>
+                <td> <%=link_to title.client.name, title_path(id: title.uuid), data: {turbo: false}  %> </td>
                 <td> <%= title.pincode %> </td>
                 <td> <%= title.taluka  %> </td>
                 <td> <%= title.pricing_detail.vat_amount  %> </td>
