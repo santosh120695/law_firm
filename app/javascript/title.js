@@ -16,3 +16,25 @@ const updateStatus = async (event) => {
         body: JSON.stringify({status: selected_status}),
     })
 }
+
+
+let costs = document.querySelectorAll(".cost")
+
+calculate_total_amount = () => {
+    let total_amount = 0
+    costs.forEach(element => {
+        if(element.value){
+            console.log(typeof(element.value));
+            total_amount+=parseFloat(element.value)
+        }
+    })
+    document.getElementById('title_pricing_detail_attributes_amount').value = total_amount
+}
+
+if(costs){
+    costs.forEach(element => {
+        element.addEventListener('change', function(){
+            calculate_total_amount()
+        })
+    });
+}

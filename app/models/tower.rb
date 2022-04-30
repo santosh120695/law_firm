@@ -1,5 +1,6 @@
 class Tower < ApplicationRecord
     has_many :floors
+    belongs_to :project
 
     attr_accessor :total_floor
     after_create :create_floors

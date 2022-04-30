@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-    before_action :set_project, only: [:show, :add_towers, :get_towers]
+    before_action :set_project, only: [:show, :get_towers]
 
     def index 
         respond_to do |format|
@@ -29,15 +29,19 @@ class ProjectsController < ApplicationController
     end
 
     def show 
+
+    end
+
+    def towers_new 
+        @tower = Tower.new 
     end
 
     def add_towers 
         tower = Tower.new(tower_params)
-        tower.project_id = @project.id
         if tower.save! 
-            redirect_to @project
+            redirect_to tower.project
         else 
-            redirect_to @project
+            render :towers_new
         end 
 
     end
@@ -62,6 +66,6 @@ class ProjectsController < ApplicationController
     end
 
     def tower_params 
-        params.require(:tower).permit(:name, :total_floor)
+        params.require(:tower).permit(:name, :total_floor, :project_id)
     end
 end

@@ -12,7 +12,7 @@
 								</div>
 							</div>
 							<div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
-								<a href="/">
+								<a href="/" data-turbo=false>
 									<img alt="Logo" src=<%= asset_path("logo-demo2.png")%> class="logo-default h-25px" />
 									<img alt="Logo" src= <%= asset_path("logo-demo2-sticky.png")%> class="logo-sticky h-25px" />
 								</a>
@@ -31,19 +31,11 @@
 												</span>
 												<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 													<div class="menu-item">
-														<a class="menu-link active py-3" href="/" data-turbo=false>
+														<a class="menu-link active py-3" href="/titles" data-turbo=false>
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
 															<span class="menu-title">Title Dashboard</span>
-														</a>
-													</div>
-													<div class="menu-item">
-														<a class="menu-link active py-3" href="/clients" data-turbo=false>
-															<span class="menu-bullet">
-																<span class="bullet bullet-dot"></span>
-															</span>
-															<span class="menu-title">Client List</span>
 														</a>
 													</div>
 													<div class="menu-item">
@@ -84,7 +76,7 @@
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
-															<span class="menu-title">Client List</span>
+															<span class="menu-title"> Clients </span>
 														</a>
 													</div>
 													<div class="menu-item">
@@ -92,9 +84,19 @@
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
-															<span class="menu-title">Projects Dashboard</span>
+															<span class="menu-title">Projects</span>
 														</a>
 													</div>
+
+													<div class="menu-item">
+														<a class="menu-link active py-3" href="<%= towers_new_projects_path %>" data-turbo=false>
+															<span class="menu-bullet">
+																<span class="bullet bullet-dot"></span>
+															</span>
+															<span class="menu-title"> Add Towers</span>
+														</a>
+													</div>
+
 													<div class="menu-item">
 														<a class="menu-link py-3" href="<%=new_unit_path%>" data-turbo=false>
 															<span class="menu-bullet">

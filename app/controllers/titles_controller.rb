@@ -1,7 +1,7 @@
 class TitlesController < ApplicationController
   before_action :set_title, only: %i[ update destroy ]
-  before_action :set_title_uuid, only: %i[ show edit  status_update]
-  skip_before_action :verify_authenticity_token, only: [:status_update]
+  before_action :set_title_uuid, only: %i[ show edit  status_update add_files]
+  skip_before_action :verify_authenticity_token, only: [:status_update, :add_files]
 
   # GET /titles or /titles.json
   def index
@@ -67,6 +67,11 @@ class TitlesController < ApplicationController
     state_transition.to =  @title.status.name 
     state_transition.save!
     return head :no_content
+  end
+
+  def add_files 
+    @title.files.attach(params[:file])
+    render json: {success: true}
   end
 
   private

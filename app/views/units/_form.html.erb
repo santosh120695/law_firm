@@ -11,52 +11,52 @@
     </div>
   <% end %>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :unit_no %>
     <%= form.text_field :name, class: "form-control", disabled: disabled %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :project%>
     <%= form.select :project_id, Project.all.pluck(:name, :id), {selected: unit.project_id, include_blank: !disabled}, {class: "form-control", disabled: disabled } %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :tower_id %>
     <%= form.select :tower_id,[[unit&.tower&.name, unit.tower_id]], {}, {class: "form-control",  disabled: disabled} %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :floor_id %>
     <%= form.select :floor_id, [[unit&.floor&.name, unit.floor_id]], {},{class: "form-control", disabled: disabled }%>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :rera_carpet_area %>
     <%= form.text_field :rera_carpet_area, class: "form-control", disabled: disabled %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :exclusive_area %>
     <%= form.text_field :exclusive_area, class: "form-control", disabled: disabled %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :open_terrace %>
     <%= form.text_field :open_terrace, class: "form-control", disabled: disabled %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :total_area %>
     <%= form.text_field :total_area, class: "form-control", disabled: disabled %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :undivided_share_of_land %>
     <%= form.text_field :undivided_share_of_land, class: "form-control", disabled: disabled %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :jantri %>
     <%= form.text_field :jantri, class: "form-control", disabled: disabled %>
   </div>

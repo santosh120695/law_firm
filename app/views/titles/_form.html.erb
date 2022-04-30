@@ -57,27 +57,29 @@
             </div>
           </div>
         </div>
-        <div class="card card-flush py-4">
-          <div class="card-header">
-						<div class="card-title">
-							<h2>Media</h2>
-						</div>
-					</div>
-          <div class="card-body pt-0">
-            <div class="fv-row mb-2">
-              <div class="dropzone" id="kt_ecommerce_add_product_media">
-								<div class="dz-message needsclick">
-									<i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
-									<div class="ms-4">
-										<h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
-										<span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
-									</div>
-								</div>
-							</div>
+        <% if title.persisted? %>
+          <div class="card card-flush py-4">
+            <div class="card-header">
+              <div class="card-title">
+                <h2>Media</h2>
+              </div>
             </div>
-            <div class="text-muted fs-7">Add Title Details and News Published PDF</div>
+            <div class="card-body pt-0">
+              <div class="fv-row mb-2">
+                <div class="dropzone" id="titles_upload">
+                  <div class="dz-message needsclick">
+                    <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                    <div class="ms-4">
+                      <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
+                      <span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-muted fs-7">Add Title Details and News Published PDF</div>
+            </div>
           </div>
-        </div>
+        <% end %>
         <div class="card card-flush py-4">
           <div class="card-header">
 						<div class="card-title">
@@ -88,12 +90,12 @@
             <%= form.fields_for :pricing_detail do |pricing_detail_form| %>
                 <div>
                   <%= pricing_detail_form.label :base_price, style: "display: block", class: "form-label" %>
-                  <%= pricing_detail_form.text_field :base_price, class: "form-control mb-2",  disabled: disabled %>
+                  <%= pricing_detail_form.number_field :base_price, class: "form-control mb-2 cost",  disabled: disabled %>
                 </div>
 
                 <div>
                   <%= pricing_detail_form.label :additional_amount, style: "display: block", class: "form-label" %>
-                  <%= pricing_detail_form.text_field :additional_amount, class: "form-control mb-2", disabled: disabled %>
+                  <%= pricing_detail_form.number_field :additional_amount, class: "form-control mb-2 cost", disabled: disabled %>
                 </div>
                 <div class='fv-row fw-bold mb-2'>
                   <%= pricing_detail_form.label :discount_type, style: "display: block", class: "fs-6 fw-bold mb-2" %>
@@ -115,12 +117,17 @@
 
                 <div>
                   <%= pricing_detail_form.label :tax_class, style: "display: block", class: "form-label" %>
-                  <%= pricing_detail_form.text_field :tax_class, class: "form-control mb-2", disabled: disabled %>
+                  <%= pricing_detail_form.select :tax_class,tax_classes, {}, {class: "form-control mb-2", disabled: disabled} %>
                 </div>
 
                 <div>
-                  <%= pricing_detail_form.label :vat_amount, style: "display: block", class: "form-label", value: "Total Amount" %>
-                  <%= pricing_detail_form.text_field :vat_amount, class: "form-control mb-2", disabled: disabled %>
+                  <%= pricing_detail_form.label :vat_amount, style: "display: block", class: "form-label", value: "Tax Amount" %>
+                  <%= pricing_detail_form.number_field :vat_amount, class: "form-control mb-2 cost", disabled: disabled %>
+                </div>
+
+                <div>
+                  <%= pricing_detail_form.label :amount, style: "display: block", class: "form-label", value: "Total Amount" %>
+                  <%= pricing_detail_form.number_field :amount, class: "form-control mb-2", disabled: disabled %>
                 </div>
 
                 <div>

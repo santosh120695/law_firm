@@ -78,9 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (dastavej_tower_dropdown){
         dastavej_tower_dropdown.addEventListener('change', function(){
             get_floors(dastavej_tower_dropdown.value).then(response => {
+                console.log(response.data);
                 options = "<option></option>"
                 response.data.forEach(data => {
-                    options+="<option value"+ data[1] + ">" + data[0] + "</option>"
+                    options+="<option value="+ data[1] + ">" + data[0] + "</option>"
                 })
                 document.getElementById("dastavej_floor_id").innerHTML = options
             })
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if(dastavej_floor_dropdown){
         dastavej_floor_dropdown.addEventListener('change', function(){
+            console.log(dastavej_floor_dropdown.value);
             get_units(dastavej_floor_dropdown.value).then(response => {
                 console.log(response);
                 options = "<option></option>"

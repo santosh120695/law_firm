@@ -9,7 +9,7 @@
             </div>
 
             <div class="modal-body">
-                <%= render "projects/tower_form", tower: Tower.new, project: project%>
+                <%= render "projects/tower_form", tower: Tower.new(project_id: project.id) %>
             </div>
         </div>
     </div>

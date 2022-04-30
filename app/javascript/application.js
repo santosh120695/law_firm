@@ -10,3 +10,4 @@ import "./title"
 import "./pincode"
 import './unit'
 import "./dastavej";
+import "./dropzone";

@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   end
   resources :projects do 
     member do 
-      post 'add_towers'
       get 'get_towers'
     end
     collection do 
+      post 'add_towers'
       get 'get_floors'
+      get 'towers_new'
     end
   end
   resources :units
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     resources :payment_statuses
     member do 
       post 'status_update'
+      post 'add_files'
     end
   end
   resources :clients
