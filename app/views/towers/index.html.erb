@@ -1,0 +1,47 @@
+<div class="card">
+    <div class='card-header'>
+        <h4 class="card-title"> Towers 
+        </h4>
+        <span class='mt-2'>
+            <%= link_to 'Add Tower', new_tower_path(project_id: params[:projects]), class: "btn btn-primary btn-sm float-end", data: {tubo: false} %>
+        </span>
+    </div>
+    <div class="card-body">
+        <%= form_tag("/towers", method: "GET") do %>
+            <div class="form-group col-12 mt-4">
+                <label> Select Client </label>
+                <%= select_tag(:clients, options_for_select(Client.all.pluck(:name, :id), params[:clients]), include_blank: true,  class: "form-control clients_towers") %>
+            </div>
+
+            <div class="form-group col-12 mt-4">
+                <label> Select Project </label>
+                <% if params[:projects].present? %>
+                    <%= select_tag(:projects,options_for_select(Client.find(params[:clients]).projects.pluck(:name, :uuid), params[:projects]), class: "form-control projects_towers", onchange: "javascript:this.form.submit();") %>
+                <% else %>
+                    <%= select_tag(:projects,options_for_select([[]]), class: "form-control projects_towers", onchange: "javascript:this.form.submit();") %>
+                <% end %>
+            </div>
+        <% end %>
+
+        <div class="table-responsive">
+            <table class='table table-striped table-bordered'>
+                <thead>
+                    <tr>    
+                        <th> Tower Name </th>
+                        <th> Total Floors </th>
+                        <th> Total Units </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%- @towers.each do |tower| %>
+                        <tr>
+                            <td> <%= tower.name %> </td>
+                            <td> <%= tower.floors.count %> </td>
+                            <td> <%= tower.total_units %> </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

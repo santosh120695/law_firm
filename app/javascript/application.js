@@ -9,5 +9,6 @@ import "./theme"
 import "./title"
 import "./pincode"
 import './unit'
+import "./towers"
 import "./dastavej";
 import "./dropzone";

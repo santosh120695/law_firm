@@ -1,4 +1,4 @@
-<%= form_with(model: pricing_detail) do |form| %>
+<%= form_with(model: pricing_detail, data: {turbo: false}) do |form| %>
   <% if pricing_detail.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(pricing_detail.errors.count, "error") %> prohibited this pricing_detail from being saved:</h2>

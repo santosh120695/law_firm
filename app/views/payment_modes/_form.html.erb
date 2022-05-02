@@ -1,4 +1,4 @@
-<%= form_with(model: payment_mode) do |form| %>
+<%= form_with(model: payment_mode, data:{turbo: false}) do |form| %>
   <% if payment_mode.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(payment_mode.errors.count, "error") %> prohibited this payment_mode from being saved:</h2>

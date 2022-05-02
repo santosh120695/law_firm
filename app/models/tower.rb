@@ -10,4 +10,8 @@ class Tower < ApplicationRecord
             Floor.create(name: index, tower_id: self.id )
         end
     end
+
+    def total_units 
+        Unit.where(id: self.floors.pluck(:id)).count
+    end
 end

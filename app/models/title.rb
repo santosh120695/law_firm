@@ -12,4 +12,8 @@ class Title < ApplicationRecord
   def set_status 
     self.status_id = StatusMaster.where(active: true, status_type: "Title", initial: true).last.id
   end
+
+  def total_earned 
+    self.payment_statuses.pluck(:amount).sum
+  end
 end

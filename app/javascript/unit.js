@@ -1,22 +1,4 @@
-const get_towers = async (project_id) => {
-    response = await fetch('/projects/' + project_id + '/get_towers')
-    return response.json()
-}
-
-const get_floors = async (tower_id) => {
-    response = await fetch('/projects/get_floors?tower_id='+ tower_id)
-    return response.json()
-}
-
-const get_projects = async (client_id) => {
-    response  = await fetch('/projects.json?id='+client_id)
-    return response.json()
-}
-
-const get_units = async (floor_id) => {
-    response = await fetch('/units.json?floor_id='+floor_id)
-    return response.json()
-}
+import {get_towers, get_projects, get_units, get_floors} from "./apis";
 
 document.addEventListener("DOMContentLoaded", function () {
     const unit_project_dropdown = document.getElementById("unit_project_id")

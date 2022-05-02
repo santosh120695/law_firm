@@ -1,4 +1,4 @@
-<%= form_with(model: status_master) do |form| %>
+<%= form_with(model: status_master, data: {turbo: false}) do |form| %>
   <% if status_master.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(status_master.errors.count, "error") %> prohibited this status_master from being saved:</h2>

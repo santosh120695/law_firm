@@ -3,10 +3,10 @@ class UnitsController < ApplicationController
     before_action :set_unit, only: [:show]
 
     def index 
-        if params[:floor_id].present? 
-            @units  =  Unit.where(floor_id: params[:floor_id])
+        if params[:clients].present? and params[:projects].present?
+            @units  =  Unit.where(tower_id: Tower.where(project_id: Project.find_by(uuid: params[:projects]).id).pluck(:id))
         else 
-            @units = Unit.all 
+            @units = []
         end
 
         respond_to do |format|

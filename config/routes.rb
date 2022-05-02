@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       get 'towers_new'
     end
   end
+
+  resources :towers do 
+  end
   resources :units
   resources :payment_modes
   resources :status_masters
