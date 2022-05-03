@@ -1,5 +1,5 @@
 class Tower < ApplicationRecord
-    has_many :floors
+    has_many :floors, dependent: :destroy
     belongs_to :project
 
     attr_accessor :total_floor

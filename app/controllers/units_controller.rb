@@ -5,6 +5,9 @@ class UnitsController < ApplicationController
     def index 
         if params[:clients].present? and params[:projects].present?
             @units  =  Unit.where(tower_id: Tower.where(project_id: Project.find_by(uuid: params[:projects]).id).pluck(:id))
+        
+        elsif params[:floor_id].present? 
+            @units = Unit.where(floor_id: params[:floor_id])
         else 
             @units = []
         end

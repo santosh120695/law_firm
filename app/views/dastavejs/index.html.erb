@@ -11,11 +11,12 @@
     <table class="table">
       <thead>
         <tr>
-          <th> </th>
+          <th> Sr. No. </th>
           <th> Client </th>
           <th> Project </th>
           <th> Party Name </th>
           <th> Contact Number </th>
+          <th> Status </th>
           <th> </th>
       </thead>
       <tbody>
@@ -26,6 +27,7 @@
             <td> <%= dastavej.project.name %> </td>
             <td> <%= dastavej.party_name %> </td>
             <td> <%= dastavej.contact_number %> </td>
+            <td> <%= dastavej.status.name %> </td>
             <td> <%= link_to "view", dastavej_url(id: dastavej.uuid), data: {turbo: false} %> </td>
           </tr>
         <% end %>

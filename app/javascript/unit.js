@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 response.data.forEach(data => {
                     options+="<option value="+data[1] + ">" + data[0] + "</option>"
                 })
-                console.log(options);
                 document.getElementById("unit_floor_id").innerHTML = options
             })
         })
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (dastavej_client_dropdown){
         dastavej_client_dropdown.addEventListener('change', function(){
             get_projects(dastavej_client_dropdown.value).then(response => {
-                options = "<option></option>"
                 response.data.forEach(data => {
                     options += "<option value="+data.id+">"+data.name+ "</option>"
                 })
@@ -48,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if(dastavej_project_dropdown){
         dastavej_project_dropdown.addEventListener('change', function(){
             get_towers(dastavej_project_dropdown.value).then(response => {
-                options = "<option></option>"
                 response.data.forEach(data => {
                     options += "<option value=" + data[1] + ">" + data[0] + "</option>"
                 })
@@ -60,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (dastavej_tower_dropdown){
         dastavej_tower_dropdown.addEventListener('change', function(){
             get_floors(dastavej_tower_dropdown.value).then(response => {
-                console.log(response.data);
                 options = "<option></option>"
                 response.data.forEach(data => {
                     options+="<option value="+ data[1] + ">" + data[0] + "</option>"
@@ -72,14 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if(dastavej_floor_dropdown){
         dastavej_floor_dropdown.addEventListener('change', function(){
-            console.log(dastavej_floor_dropdown.value);
             get_units(dastavej_floor_dropdown.value).then(response => {
-                console.log(response);
                 options = "<option></option>"
                 response.data.forEach(data => {
                     options += "<option value=" + data.id + ">" + data.name + "</option>"
                 })
-                console.log(options);
                 document.getElementById("dastavej_unit_id").innerHTML = options
             })
         })

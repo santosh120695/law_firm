@@ -5,14 +5,14 @@ class TowersController < ApplicationController
 
     def index 
         if params[:clients].present? and params[:projects].present?
-            @towers = Tower.where(project_id: Project.find_by(uuid: params[:projects]).id)
+            @towers = Tower.where(project_id: Project.find_by(uuid: params[:projects])&.id)
         else 
             @towers = []
         end
     end
 
     def new 
-        @tower = Tower.new(project_id: Project.find_by(uuid: params[:project_id]).id)
+        @tower = Tower.new(project_id: Project.find_by(uuid: params[:project_id])&.id)
     end
 
     def show 
