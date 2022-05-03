@@ -98,23 +98,7 @@
                   <%= pricing_detail_form.label :additional_amount, style: "display: block", class: "form-label" %>
                   <%= pricing_detail_form.number_field :additional_amount, class: "form-control mb-2 cost", disabled: disabled %>
                 </div>
-                <div class='fv-row fw-bold mb-2'>
-                  <%= pricing_detail_form.label :discount_type, style: "display: block", class: "fs-6 fw-bold mb-2" %>
-                  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9">
-                    <%= pricing_detail_form.collection_radio_buttons :discount_type, [["No Discount", 1], ["Full Discount", 2], ["Fixed Price", 3]], :second, :first do |discount| %>
-                      <div class='col'>
-                        <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-center p-6" data-kt-button="true">
-                          <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                            <%= discount.radio_button class: "form-check-input", disabled: disabled, checked: ((discount.value.to_i.eql? title.pricing_detail.discount_type) ? "checked" : '') %>
-                          </span>
-                          <span class="ms-5">
-														<span class="fs-4 fw-bolder text-gray-800 d-block"><%= discount.label %></span>
-													</span>
-                        </label>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
+
 
                 <div>
                   <%= pricing_detail_form.label :tax_class, style: "display: block", class: "form-label" %>
@@ -128,7 +112,7 @@
 
                 <div>
                   <%= pricing_detail_form.label :amount, style: "display: block", class: "form-label", value: "Total Amount" %>
-                  <%= pricing_detail_form.number_field :amount, class: "form-control mb-2", disabled: disabled, value: title.pricing_detail.total_amount %>
+                  <%= pricing_detail_form.number_field :amount, class: "form-control mb-2 total_amount", disabled: disabled, value: title.pricing_detail.total_amount %>
                 </div>
 
                 <div>
