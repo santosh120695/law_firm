@@ -106,7 +106,34 @@
         <%= form.file_field :mortage, class: "form-control" %>
     </div>
   <% end %>
-
+  <div class="mt-4"></div>
+	<h2>Pricing</h2>
+    <%= form.fields_for :dastavej_pricing_detail do |pricing_detail_form| %>
+        <div>
+          <%= pricing_detail_form.label :base_price, style: "display: block", class: "form-label" %>
+          <%= pricing_detail_form.number_field :base_price, class: "form-control mb-2 cost",  disabled: disabled %>
+        </div>
+        <div>
+          <%= pricing_detail_form.label :additional_amount, style: "display: block", class: "form-label" %>
+          <%= pricing_detail_form.number_field :additional_amount, class: "form-control mb-2 cost", disabled: disabled %>
+        </div>
+        <div>
+          <%= pricing_detail_form.label :tax_class, style: "display: block", class: "form-label" %>
+          <%= pricing_detail_form.select :tax_class,tax_classes, {}, {class: "form-control mb-2", disabled: disabled} %>
+        </div>
+        <div>
+          <%= pricing_detail_form.label :vat_amount, style: "display: block", class: "form-label", value: "Tax Amount" %>
+          <%= pricing_detail_form.number_field :vat_amount, class: "form-control mb-2 cost", disabled: disabled %>
+        </div>
+        <div>
+          <%= pricing_detail_form.label :amount, style: "display: block", class: "form-label", value: "Total Amount" %>
+          <%= pricing_detail_form.number_field :amount, class: "form-control mb-2 total_amount", disabled: disabled,  value: dastavej.dastavej_pricing_detail&.total_amount %>
+        </div>
+        <div>
+          <%#= pricing_detail_form.label :title_id, style: "display: block" %>
+          <%= pricing_detail_form.hidden_field :dastavej_id %>
+        </div>
+    <% end %>
     <div class="form-group mt-3">
       <%= form.submit class: 'btn btn-primary' %>
     </div>

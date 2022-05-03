@@ -128,7 +128,7 @@
 
                 <div>
                   <%= pricing_detail_form.label :amount, style: "display: block", class: "form-label", value: "Total Amount" %>
-                  <%= pricing_detail_form.number_field :amount, class: "form-control mb-2", disabled: disabled %>
+                  <%= pricing_detail_form.number_field :amount, class: "form-control mb-2", disabled: disabled, value: title.pricing_detail.total_amount %>
                 </div>
 
                 <div>

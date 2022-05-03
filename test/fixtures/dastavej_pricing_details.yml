@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  base_price: 1.5
+  additional_amount: 1.5
+  tax_class: MyString
+  vat_amount: 1.5
+  dastavej: one
+  uuid: MyString
+
+two:
+  base_price: 1.5
+  additional_amount: 1.5
+  tax_class: MyString
+  vat_amount: 1.5
+  dastavej: two
+  uuid: MyString

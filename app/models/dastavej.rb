@@ -4,6 +4,7 @@ class Dastavej < ApplicationRecord
   belongs_to :unit
   belongs_to :tower 
   belongs_to :floor
+  has_one :dastavej_pricing_detail
   belongs_to :status, class_name: "StatusMaster", foreign_key: "status_id", optional: true
   has_many :payment_statuses, as: :item
   before_create :set_state 
@@ -17,6 +18,9 @@ class Dastavej < ApplicationRecord
   has_one_attached :mortage 
 
   has_many_attached :other_attachments
+
+  accepts_nested_attributes_for :dastavej_pricing_detail, allow_destroy: true, reject_if: :all_blank
+
 
 
   def set_state 

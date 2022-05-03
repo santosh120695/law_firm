@@ -28,7 +28,7 @@ calculate_total_amount = () => {
             total_amount+=parseFloat(element.value)
         }
     })
-    document.getElementById('title_pricing_detail_attributes_amount').value = total_amount
+    document.getElementsByClassName('total_amount')[0].value = total_amount
 }
 
 if(costs){
