@@ -79,6 +79,6 @@ class DastavejsController < ApplicationController
     def dastavej_params
       params.require(:dastavej).permit(:client_id, :project_id, :unit_id, :party_name, 
                                        :contact_number, :tower_id, :floor_id, :development_agreement, :ats,
-                                       :other_agreement, :corraction_agreement, :hakk_kami, :mortage, :sale_deed, dastavej_pricing_detail_attributes: [:base_price, :additional_amount, :discount_type, :tax_class, :vat_amount, :dastavej_id]  )
+                                       :other_agreement, :corraction_agreement, :hakk_kami, :mortage, :sale_deed, dastavej_pricing_detail_attributes: [:id, :base_price, :additional_amount, :discount_type, :tax_class, :vat_amount, :dastavej_id]  )
     end
 end
