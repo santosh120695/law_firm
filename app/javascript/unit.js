@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (dastavej_client_dropdown){
         dastavej_client_dropdown.addEventListener('change', function(){
             get_projects(dastavej_client_dropdown.value).then(response => {
+                let options= "<option></option>"
                 response.data.forEach(data => {
                     options += "<option value="+data.id+">"+data.name+ "</option>"
                 })
