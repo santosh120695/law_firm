@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (unit_tower_dropdown){
         unit_tower_dropdown.addEventListener('change', function(){
             get_floors(unit_tower_dropdown.value).then(response => {
-                options = ""
+                options = "<option></option>"
                 response.data.forEach(data => {
                     options+="<option value="+data[1] + ">" + data[0] + "</option>"
                 })
@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if(dastavej_project_dropdown){
         dastavej_project_dropdown.addEventListener('change', function(){
             get_towers(dastavej_project_dropdown.value).then(response => {
+                let options = "<option></option>"
                 response.data.forEach(data => {
                     options += "<option value=" + data[1] + ">" + data[0] + "</option>"
                 })
