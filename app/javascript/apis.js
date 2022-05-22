@@ -17,3 +17,13 @@ export const get_units = async (floor_id) => {
     response = await fetch('/units.json?floor_id=' + floor_id)
     return response.json()
 }
+
+export const submit_stage = async(stage_params) => {
+    response = await fetch(`/stages/${stage_params['id']}.json`,{
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ stage: stage_params }),
+    })
+}

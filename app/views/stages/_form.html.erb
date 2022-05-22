@@ -1,0 +1,20 @@
+<%= form_with(model: stage, local: false, remote: true) do |form| %>
+  <tr>
+    <td>
+      <%= stage.stage_master.name %>
+      <%= form.hidden_field :id %>
+    </td>
+
+    <td>
+      <%= form.date_field :stage_date, name: "stage_date", class: "form-control stage-field" %>
+    </td>
+
+    <td>
+      <%= form.text_field :initial_entry, name: 'initial_entry', class: "form-control stage-field" %>
+    </td>
+
+    <td>
+      <%= form.text_field :final_entry, class: "form-control stage-field", name: "final_entry" %>
+    </td>
+  </tr>
+<% end %>

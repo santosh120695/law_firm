@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_11_213015) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_14_190532) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,44 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_213015) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dastavej_pricing_details", force: :cascade do |t|
+    t.float "base_price"
+    t.float "additional_amount"
+    t.string "tax_class"
+    t.float "vat_amount"
+    t.bigint "dastavej_id", null: false
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dastavej_id"], name: "index_dastavej_pricing_details_on_dastavej_id"
+  end
+
+  create_table "dastavejs", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "project_id", null: false
+    t.bigint "unit_id", null: false
+    t.string "party_name"
+    t.string "contact_number"
+    t.string "uuid"
+    t.bigint "tower_id"
+    t.bigint "floor_id"
+    t.bigint "status_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_dastavejs_on_client_id"
+    t.index ["project_id"], name: "index_dastavejs_on_project_id"
+    t.index ["unit_id"], name: "index_dastavejs_on_unit_id"
+  end
+
+  create_table "floors", force: :cascade do |t|
+    t.string "name"
+    t.bigint "tower_id", null: false
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tower_id"], name: "index_floors_on_tower_id"
+  end
+
   create_table "payment_modes", force: :cascade do |t|
     t.string "name"
     t.string "uuid"
@@ -66,6 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_213015) do
     t.float "amount"
     t.string "uuid"
     t.bigint "title_id"
+    t.bigint "item_id"
+    t.string "item_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["payment_mode_id"], name: "index_payment_statuses_on_payment_mode_id"
@@ -84,6 +124,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_213015) do
     t.index ["title_id"], name: "index_pricing_details_on_title_id"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.bigint "client_id", null: false
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_projects_on_client_id"
+  end
+
+  create_table "stage_masters", force: :cascade do |t|
+    t.string "name"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stages", force: :cascade do |t|
+    t.string "item_type"
+    t.bigint "item_id"
+    t.bigint "stage_master_id", null: false
+    t.date "stage_date"
+    t.string "initial_entry"
+    t.string "final_entry"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stage_master_id"], name: "index_stages_on_stage_master_id"
+  end
+
   create_table "state_transitions", force: :cascade do |t|
     t.string "item_type"
     t.bigint "item_id"
@@ -100,8 +169,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_213015) do
   create_table "status_masters", force: :cascade do |t|
     t.string "name"
     t.string "color"
-    t.string "active"
+    t.boolean "active", default: true
     t.string "uuid"
+    t.string "status_type"
+    t.boolean "initial", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -118,6 +189,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_213015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_titles_on_client_id"
+  end
+
+  create_table "towers", force: :cascade do |t|
+    t.string "name"
+    t.bigint "project_id"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "name"
+    t.float "rera_carpet_area"
+    t.float "exclusive_area"
+    t.float "open_terrace"
+    t.float "total_area"
+    t.float "undivided_share_of_land"
+    t.string "jantri"
+    t.float "jantri_amount"
+    t.bigint "tower_id", null: false
+    t.bigint "floor_id", null: false
+    t.bigint "project_id"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["floor_id"], name: "index_units_on_floor_id"
+    t.index ["tower_id"], name: "index_units_on_tower_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,8 +236,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_213015) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "dastavej_pricing_details", "dastavejs"
+  add_foreign_key "dastavejs", "clients"
+  add_foreign_key "dastavejs", "projects"
+  add_foreign_key "dastavejs", "units"
+  add_foreign_key "floors", "towers"
   add_foreign_key "payment_statuses", "payment_modes"
   add_foreign_key "pricing_details", "titles"
+  add_foreign_key "projects", "clients"
+  add_foreign_key "stages", "stage_masters"
   add_foreign_key "state_transitions", "users"
   add_foreign_key "titles", "clients"
+  add_foreign_key "units", "floors"
+  add_foreign_key "units", "towers"
 end

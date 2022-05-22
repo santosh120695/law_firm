@@ -55,6 +55,11 @@
               <%= form.label :description, style: "display: block", class: "form-label" %>
               <%= form.text_area :description, class: "form-control mb-2", disabled: disabled, style: "height: '5em'", rows: 10 %>
             </div>
+
+            <% if title.persisted? %>
+              <%= form.label :news_date %>
+              <%= form.date_field :news_date, class: "form-control mb-2"  %>
+            <% end %>
           </div>
         </div>
         <% if title.persisted? %>

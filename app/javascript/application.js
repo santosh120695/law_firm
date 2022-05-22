@@ -11,3 +11,8 @@ import './unit'
 import "./towers"
 import "./dastavej";
 import "./dropzone";
+import "./stage";
+
+import PagyData from "./pagy_data";
+
+new PagyData('.pagy-data')

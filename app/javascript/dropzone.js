@@ -9,5 +9,4 @@ if (document.getElementById("titles_upload")){
     let dropzone = new  Dropzone("#titles_upload", {
         url: "/titles/"+title_id+"/add_files",
     })
-
 }

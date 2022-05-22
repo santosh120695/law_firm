@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stages
+  resources :stage_masters
   resources :dastavejs do 
     member do 
       post 'dastavej_status_update'

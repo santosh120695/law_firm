@@ -1,0 +1,15 @@
+<table class='table table-bordered table-striped'>
+    <thead>
+        <tr>
+            <th> </th>
+            <th>  Date </th>
+            <th>  Initial Entry </th>
+            <th>  Final Entry </th>
+        </tr>
+    </thead>
+    <tbody>
+        <%- item.stages.order("created_at ASC").each do |stage| %>
+            <%= render "stages/form", stage: stage %>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @stage_master %>
+
+<div>
+  <%= link_to "Edit this stage master", edit_stage_master_path(@stage_master) %> |
+  <%= link_to "Back to stage masters", stage_masters_path %>
+
+  <%= button_to "Destroy this stage master", @stage_master, method: :delete %>
+</div>

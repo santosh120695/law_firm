@@ -9,6 +9,8 @@ class Title < ApplicationRecord
 
   before_create :set_uuid , :set_status
 
+  attr_accessor :news_date
+
   def set_status 
     self.status_id = StatusMaster.where(active: true, status_type: "Title", initial: true).last.id
   end

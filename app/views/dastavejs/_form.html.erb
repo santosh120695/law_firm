@@ -134,6 +134,12 @@
           <%= pricing_detail_form.hidden_field :dastavej_id %>
         </div>
     <% end %>
+    <div class="mt-4"></div>
+    
+    <% if dastavej.persisted? %>
+      <h2> Stages </h2>
+      <%= render "stages/stages_form", item: dastavej %>
+    <% end %>
     <div class="form-group mt-3">
       <%= form.submit class: 'btn btn-primary' %>
     </div>
