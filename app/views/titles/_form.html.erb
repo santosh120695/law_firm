@@ -127,12 +127,22 @@
             <% end %>
           </div>
         </div>
+
+        <div class="mt-4"></div>
+        <% if title.persisted? %>
+          <div class="card card-flush py-4">
+            <div class="card-header">
+              <h2> Stages </h2>
+            </div>
+            <div class="card-body pt-0">
+              <%= render "stages/stages_form", item: title %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-  <% if !disabled %>
-    <div class="d-flex justify-content-end">
-      <%= form.submit class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  <div class="d-flex justify-content-end mt-2">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
 <% end %>

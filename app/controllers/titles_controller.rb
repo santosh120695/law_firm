@@ -41,7 +41,7 @@ class TitlesController < ApplicationController
   def update
     respond_to do |format|
       if @title.update!(title_params)
-        format.html { redirect_to title_url(@title), notice: "Title was successfully updated." }
+        format.html { redirect_to title_url(@title.uuid), notice: "Title was successfully updated." }
         format.json { render :show, status: :ok, location: @title }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -85,6 +85,6 @@ class TitlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def title_params
-      params.require(:title).permit(:client_id, :block_no, :pincode, :village, :taluka, :description, pricing_detail_attributes: [:base_price, :additional_amount, :discount_type, :tax_class, :vat_amount, :title_id])
+      params.require(:title).permit(:client_id, :block_no, :news_date, :pincode, :village, :taluka, :description, pricing_detail_attributes: [:base_price, :additional_amount, :discount_type, :tax_class, :vat_amount, :title_id])
     end
 end
