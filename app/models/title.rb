@@ -10,6 +10,8 @@ class Title < ApplicationRecord
 
   before_create :set_uuid , :set_status
 
+  after_create :generate_stages
+
   def set_status 
     self.status_id = StatusMaster.where(active: true, status_type: "Title", initial: true).last.id
   end

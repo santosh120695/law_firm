@@ -1,7 +1,7 @@
 class TitlesController < ApplicationController
   before_action :set_title, only: %i[ update destroy ]
   before_action :set_title_uuid, only: %i[ show edit  status_update add_files]
-  skip_before_action :verify_authenticity_token, only: [:status_update, :add_files]
+  skip_before_action :verify_authenticity_token, only: [:status_update, :add_files, :update]
 
   # GET /titles or /titles.json
   def index
