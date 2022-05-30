@@ -22,10 +22,26 @@ PaymentMode.create(name: "UPI")
 PaymentMode.create(name: "Cash")
 PaymentMode.create(name: "Debit Card")
 
-StageMaster.create(name: 'City Survey')
-StageMaster.create(name: 'Corporqation')
-StageMaster.create(name: 'Gas Bill')
-StageMaster.create(name: 'GEB')
+StageMaster.create(name: 'City Survey', stage_type: "Title")
+StageMaster.create(name: 'Corporqation', stage_type: "Title")
+StageMaster.create(name: 'Gas Bill', stage_type: "Title")
+StageMaster.create(name: 'GEB', stage_type: "Title")
+
+
+StageMaster.create(name: 'Stamp Duty',stage_type: "Dastavej", group: "ATS")
+StageMaster.create(name: 'PDE Number',stage_type: "Dastavej", group: "ATS")
+StageMaster.create(name: 'Appointment Date',stage_type: "Dastavej", group: "ATS")
+StageMaster.create(name: 'Registration Details',stage_type: "Dastavej", group: "ATS")
+
+StageMaster.create(name: 'Stamp Duty',stage_type: "Dastavej", group: "SALE Deed")
+StageMaster.create(name: 'PDE Number',stage_type: "Dastavej", group: "SALE Deed")
+StageMaster.create(name: 'Appointment Date',stage_type: "Dastavej", group: "SALE Deed")
+StageMaster.create(name: 'Registration Details',stage_type: "Dastavej", group: "SALE Deed")
+
+PaymentDetail.create(name: 'payment detail 1', detail_type: "Title")
+PaymentDetail.create(name: 'payment detail 2', detail_type: "Title")
+PaymentDetail.create(name: 'payment detail 3', detail_type: "Title")
+
 
 # rails g scaffold client name uuid active:boolean location contact_no
 

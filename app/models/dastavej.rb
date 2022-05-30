@@ -26,7 +26,7 @@ class Dastavej < ApplicationRecord
 
 
   def generate_stages 
-    StageMaster.all.each {|stage_master| Stage.create(stage_master: stage_master, item_type: self.class.to_s, item_id: self.id)}
+    StageMaster.where(stage_type: self.class.to_s).each {|stage_master| Stage.create(stage_master: stage_master, item_type: self.class.to_s, item_id: self.id)}
   end
 
 

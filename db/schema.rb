@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_22_033329) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_201039) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,6 +90,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_033329) do
     t.index ["tower_id"], name: "index_floors_on_tower_id"
   end
 
+  create_table "payment_details", force: :cascade do |t|
+    t.string "name"
+    t.string "uuid"
+    t.string "detail_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payment_modes", force: :cascade do |t|
     t.string "name"
     t.string "uuid"
@@ -136,6 +144,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_033329) do
   create_table "stage_masters", force: :cascade do |t|
     t.string "name"
     t.string "uuid"
+    t.string "stage_type"
+    t.string "group"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
