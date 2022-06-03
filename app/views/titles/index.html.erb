@@ -28,28 +28,30 @@
 	<div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
     <div class="row">
       <div class="col-sm-12 pl-2" style="padding-left: 4em">
-        <table class="pagy-data ">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Pincode</th>
-              <th>Taluka</th>
-              <th>Amount</th>
-              <th>Created On</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%- @titles.each do |title| %>
-              <tr>
-                <td> <%=link_to title.client.name, title_path(id: title.uuid), data: {turbo: false}  %> </td>
-                <td> <%= title.pincode %> </td>
-                <td> <%= title.taluka  %> </td>
-                <td> <%= title.pricing_detail.vat_amount  %> </td>
-                <td> <%= distance_of_time_in_words(Time.now, title.created_at)  %> </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-			</div>
+			<table class="pagy-data ">
+				<thead>
+					<tr>
+					<th>Name</th>
+					<th>Pincode</th>
+					<th>Taluka</th>
+					<th>Amount</th>
+					<th> Status </th>
+					<th>Created On</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%- @titles.each do |title| %>
+					<tr>
+						<td> <%=link_to title.client.name, title_path(id: title.uuid), data: {turbo: false}  %> </td>
+						<td> <%= title.pincode %> </td>
+						<td> <%= title.taluka  %> </td>
+						<td> <%= title.pricing_detail.vat_amount  %> </td>
+						<td> <%= title.status.name %> </td>
+						<td> <%= distance_of_time_in_words(Time.now, title.created_at)  %> </td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
     </div>
   </div>

@@ -1,9 +1,16 @@
 class PaymentStatusesController < ApplicationController
   before_action :set_payment_status, only: %i[ show edit update destroy ]
+  layout "pdf", only: %i[bill]
 
   # GET /payment_statuses or /payment_statuses.json
   def index
     @payment_statuses = PaymentStatus.all
+  end
+
+  def bill 
+    @item = params[:item_type].constantize.find_by(uuid: params[:item])
+    @payment_statuses = @item.payment_statuses
+
   end
 
   # GET /payment_statuses/1 or /payment_statuses/1.json

@@ -23,7 +23,11 @@ Rails.application.routes.draw do
   resources :payment_modes
   resources :status_masters
   resources :pricing_details
-  resources :payment_statuses
+  resources :payment_statuses do 
+    collection do 
+      get 'bill/:item_type/:item' => "payment_statuses#bill"
+    end
+  end
   resources :titles,constraints: { id: /[a-zA-Z0-9]+/ } do 
     member do 
       post 'status_update'

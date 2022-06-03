@@ -2,6 +2,10 @@
 	<li class="nav-item">
 		<a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#kt_ecommerce_add_product_general">Title Entry</a>
 	</li>
+	<li class="nav-item">
+		<a class="nav-link text-active-primary pb-4" target="_blank" href=<%= "/payment_statuses/bill/#{title.class.to_s}/#{title.uuid}" %>  > Print Bill </a>
+	</li>
+
 </ul>
 <a href="<%= titles_path %>" class="btn btn-primary" data-turbo=false>View All Titles</a>
 

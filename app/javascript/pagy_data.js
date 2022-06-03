@@ -8,22 +8,10 @@ export default class PagyData {
     
     constructor(element_selector){
         this.element = document.querySelector(element_selector)
+        console.log(this.element);
         if(!!this.element){
             this.element.className+=this.table_classes.join(" ")
-            this.data_url  = this.element.data('url')
-            this.fetch_data().then((response) => {
-                
-            })
+            console.log(this.element.className);
         }
-    }
-
-    fetch_data = async () => {
-        response = await fetch(
-            this.data_url,
-        )
-    }
-
-    data_pagination = ()=> {
-
     }
 }
